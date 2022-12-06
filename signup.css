@@ -1,0 +1,319 @@
+/* ===== Google Font Import - Poformsins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    background-image: url(background.png);
+    background-attachment: fixed;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin-right: 10px;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 00px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border-radius:10px;
+}
+
+.openbtn:hover {
+    background-color: rgba(9, 223, 70, 0.571);
+    ;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+    position: absolute;
+    left: 1px;
+}
+.imgg{
+    /* margin-bottom: auto; */
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    position:relative;
+    right: 120px;
+    margin-bottom: 36px;
+}
+img {
+    width: 15%;
+    margin-top:5% ;
+    margin-left: 50%;
+}
+
+.container{
+    max-width: 440px;
+    padding: 0 20px;
+    margin: 150px auto;
+}
+.container .forms{
+    display: flex;
+    margin-top: -40%;
+    height: 440px;
+    width: 200%;
+    transition: height 0.2s ease;
+    
+}
+
+.container .form{
+    width: 50%;
+    padding: 30px;
+    background-color: #fff;
+    transition: margin-left 0.18s ease;
+}
+.container.active .login{
+    margin-left: -50%;
+    opacity: 0;
+    transition: margin-left 0.18s ease, opacity 0.15s ease;
+}
+.container .signup{
+    opacity: 0;
+    transition: opacity 0.09s ease;
+}
+.container.active .signup{
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.container.active .forms{
+    height: 600px;
+}
+ .container .form .title{
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+} 
+.form .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    /* background-color: #4070f4; */
+    /* border-radius: 25px; */
+}
+.form .input-field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+.input-field input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+.input-field input:is(:focus, :valid){
+    border-bottom-color: #4070f4;
+}
+.input-field i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+    transition: all 0.2s ease;
+}
+.input-field input:is(:focus, :valid) ~ i{
+    color: #4070f4;
+}
+.input-field i.icon{
+    left: 0;
+}
+.input-field i.showHidePw{
+    right: 0;
+    cursor: pointer;
+    padding: 10px;
+}
+.form .checkbox-text{
+    display: flex;
+    padding-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.checkbox-text .checkbox-content{
+    display: flex;
+    align-items: center;
+}
+.checkbox-content input{
+    margin: 0 8px -2px 4px;
+    accent-color: #4070f4;
+}
+.form .text{
+    color: #333;
+    font-size: 14px;
+}
+.form a.text{
+    color: #4070f4;
+    text-decoration: none;
+}
+.form a:hover{
+    text-decoration: underline;
+}
+.form .button{
+    margin-top: 35px;
+} 
+.forms .button input{
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #4070f4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.button input:hover{
+    background-color: #265df2;
+}
+
+.form .login-signup{
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 400px) {
+    .form {
+        padding: 20px 10px;
+    }
+
+    .sidebar {
+        padding-top: 15px;
+    }
+    
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+@media (max-width:500px) {
+    .container{
+        width: 100%;
+    }
+    .container .title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        
+    }
+   .input-field i{
+    display: none;
+    font-size: 18px;
+
+   }
+    .checkbox-text a.text{
+        font-size: 10px;
+    }
+    .checkbox-content .text{
+        font-size: 10px;
+    }
+    .input-field input{
+      font-size: 50px;
+      text-align: center;
+    }
+    span.title{
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .login-signup{
+        font-size: 8px;
+        display: flex;
+    }
+    .login-signup a{
+     font-size: 10px;
+    }
+    #main{
+        margin-top: -15%;
+        padding-bottom: 30px;
+        width: 50px;
+    }
+    .input-field input{
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        width: 100%;
+    }
+    .checkbox-text{
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 30px;
+        padding-bottom: 10px;
+    }
+    .form .button input{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: #4070f4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+}
+

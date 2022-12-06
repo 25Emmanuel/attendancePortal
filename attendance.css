@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+body {
+    background: url(background.png);
+    /* font-family: MyOwnFontTwo; */
+    /* font-weight: 800; */
+}
+.att-container {
+    width: 80%;
+    margin: 3rem auto 3rem auto;
+    border-radius: 0 1.5rem 0 1.5rem;
+    background: white;
+    min-height: 85vh;
+    box-shadow: 4px 3px 4px  #509D7C;
+}
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 00px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.openbtn:hover {
+    background-color: rgba(9, 223, 70, 0.571);
+    ;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.logout-btn-container {
+    padding: 2rem;
+}
+.logout-btn {
+    padding: 1rem;
+    border-radius: 0.7rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 900;
+}
+.logout-btn:hover {
+    background: hsl(0, 80%, 70%);
+    color: white;
+}
+.page-header {
+    text-align: center;
+    font-size: 5rem;
+    text-decoration: underline;
+}
+.day-information {
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+@font-face {
+    font-family: myOwnFont;
+    src: url(/fonts/digital-7.ttf);
+}
+@font-face {
+    font-family: myOwnFontTwo;
+    src: url(/fonts/Merriweather-Bold.ttf);
+}
+.day-holder > h1:nth-child(1) {
+    font-family: myOwnFont;
+    font-size: 7rem;
+    padding: 3rem;
+}
+
+
+.day-holder {
+    background: #08995C;
+    min-height: 20vh;
+    min-width: 20vw;
+    text-align: center;
+    padding-top: 1.5rem;
+    border-radius: 0px 15px 0px 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    box-shadow: 2px 2px grey;
+    
+}
+.date-holder {
+    background:#08995C;
+    min-height: 20vh;
+    min-width: 20vw;
+    text-align: center;
+    border-radius: 0px 15px 0px 15px;
+    margin-top: 15px;
+    margin-right: 15px;
+    box-shadow: 2px 2px linear-gradient(#089E5F, #509D7C);
+}
+.date-holder > h1 {
+    font-size: 3rem;
+}
+.date-holder > h3 {
+    font-size: 4rem;
+}
+.date-holder h1:nth-child(3) {
+    font-size: 4rem;
+}
+
+.table {
+    width: 50%;
+    margin: 0px auto;
+}
+#btn-row {
+    height: 10vh;
+}
+.headers {
+    height: 5vh;
+}
+.headers th {
+    max-width: 3rem;
+    background: #08995C;
+}
+td {
+    background: #08995C;
+}
+tr, th, td, table {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 2.6rem;
+}
+.sign-in, .sign-out {
+    position: absolute;
+    left: -9999px;
+}
+.sign-in-toogle-btn, .sign-out-toogle-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.sign-in-toogle-btn::before, .sign-out-toogle-btn::before {
+    content: "";
+    width: 70px;
+    height: 31px;
+    background: hsl(0, 80%, 70%);
+    position: relative;
+    border-radius: 15px;
+}
+.sign-in-toogle-btn::after {
+    content: "\2715";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 31px;
+    height: 31px;
+    background: hsl(0, 80%, 50%);
+    border-radius: 50%;
+    position: absolute;
+    left: 51rem;
+    /* screen style for presentation */
+    /* left: 54rem; */
+}
+.sign-in:checked + .sign-in-toogle-btn::after {
+    content: "\2713";
+    background: hsl(120, 100%, 40%);
+    left: 55.1rem;
+    /* screen style for presentation */
+    /* left: 59rem; */
+}
+
+
+.sign-in:checked + .sign-in-toogle-btn::before {
+    background: hsl(100, 100%, 70%);
+}
+.sign-out:checked + .sign-out-toogle-btn::after {
+    content: "\2713";
+    background: hsl(120, 100%, 40%);
+    /* screen style for presentation */
+    left: 78.4rem;
+    /* left: 83.3rem; */
+}
+
+
+.sign-out:checked + .sign-out-toogle-btn::before {
+    background: hsl(100, 100%, 70%);
+}
+.sign-out-toogle-btn::after {
+    content: "\2715";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 31px;
+    height: 31px;
+    background: hsl(0, 80%, 50%);
+    border-radius: 50%;
+    position: absolute;
+    /* screen style for presentation */
+    left: 82.2rem;
+    /* left: 88.1rem;  */
+}
+.avg-att {
+    font-size: 3rem;
+    margin-left: 42rem;
+    margin-bottom: 1rem;
+}
+.submit-btn {
+    width: 20vw;
+    margin-top: 3rem;
+    margin-left: 40.7rem;
+    font-size: xx-large;
+    font-weight: bolder;
+    min-height: 4rem;
+    background:linear-gradient(#08995C, #509D7C);
+    outline: none;
+    border: none;
+    padding: 1rem;
+    color: aliceblue;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.submit-btn:hover {
+    background:#089E5F;
+}
+
+@media (height <= 668px) and (width <= 375px){
+    .page-header {
+        font-size: 2rem;
+    }
+    .att-container {
+        min-height: 50vh;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .day-information {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    .day-holder, .date-holder {
+        width: 70%;
+    }
+    .table {
+        width: 90%;
+    }
+    .sign-in-toogle-btn::after {
+        content: "\2715";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 31px;
+        height: 31px;
+        background: hsl(0, 80%, 50%);
+        border-radius: 50%;
+        position: absolute;
+        left: 8rem;
+    }
+    .sign-in:checked + .sign-in-toogle-btn::after {
+        content: "\2713";
+        background: hsl(120, 100%, 40%)	;
+        left: 12.5rem;
+    }
+    .sign-out-toogle-btn::after {
+        content: "\2715";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 31px;
+        height: 31px;
+        background: hsl(0, 80%, 50%);
+        border-radius: 50%;
+        position: absolute;
+        left: 26.4rem;
+    }
+    .sign-out:checked + .sign-out-toogle-btn::after {
+        content: "\2713";
+        background: hsl(120, 100%, 40%);
+        left: 21.9rem;
+    }
+    .avg-att {
+        font-size: 1.5rem;
+        margin-left: 9rem;
+    }
+    .submit-btn {
+        margin-top: 1rem;
+        margin-left: 8rem;
+        width: 50%;
+        min-height: 3rem;
+    }
+}
+
+
+
