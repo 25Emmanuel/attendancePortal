@@ -1,8 +1,7 @@
 <?php
     session_start();
     include 'connection.php';
-    // include 'startsignup.php';
-    // include 'signupcont.php';
+    
 
 
 
@@ -52,7 +51,7 @@
         '$nameOfSchool', '$addressOfSchool', '$level', '$course', '$departmentPosted', '$duration', '$anyMedChallenge', '$conditionIfYes')";
 
         if (mysqli_query($conn, $sql)) {
-            //session_destroy();
+            
             header('location:attendance.php');
 
         } else {

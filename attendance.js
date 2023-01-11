@@ -1,7 +1,8 @@
 const dayHolder = document.querySelector(".day-holder"),
   dateHolder = document.querySelector(".date-holder"),
   table = document.querySelector(".table"), signOutBtn = document.querySelector(".sign-out"),
-  signInBtn = document.querySelector(".sign-in");
+  signInBtn = document.querySelector(".sign-in"), submitBtn = document.querySelector(".submit-btn"),
+  alertBox = document.querySelector(".alert-cont");
 let monthOfTheYear = [
   "January",
   "February",
@@ -47,12 +48,12 @@ function time() {
 setInterval(time, 1000);
 
 // disabling buttons at a particular time
-if (new Date().getHours() > 9) {
-  signInBtn.disabled = true;
-}
-if (new Date().getHours() < 17) {
-  signOutBtn.disabled = true;
-}
+// if (new Date().getHours() > 9) {
+//   signInBtn.disabled = true;
+// }
+// if (new Date().getHours() < 17) {
+//   signOutBtn.disabled = true;
+// }
 
 
 // date on screen
@@ -71,12 +72,27 @@ todaysDate();
 
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "20px";
-  }
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "20px";
+}
   
-  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-  }
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+// alertbox functionality
+submitBtn.addEventListener('click', toggleClass);
+
+function toggleClass () {
+  console.log("entered");
+  alertBox.classList.add('toggle');
+  setTimeout(() => {
+      alertBox.classList.remove('toggle');
+  }, 2000);
+  console.log("exit");
+}
+
+
+

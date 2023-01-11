@@ -4,7 +4,8 @@
     $email = $password = $firstname = $surname = $email = $signIn ='';
     
     date_default_timezone_set('Africa/Lagos');
-    $current_time = date('H'); 
+    //$current_time = date('H'); 
+    $current_time = 18; 
     
     
 
@@ -25,13 +26,16 @@
     $originalPassword = $feedback[0]['password'];
 
     if (($email === $originalEmail) && ($password === $originalPassword)) {
-
+        
+        // clearing the users state holder after 6pm
         if ($current_time == 18) {
             $sql = "DELETE FROM `holder` WHERE `email` = '$email'";
             mysqli_query($conn, $sql);
         }
 
         
+        
+        $_SESSION['id'] = $feedback[0]['id'];
         $_SESSION['firstname'] = $feedback[0]['firstname'];
         $_SESSION['email'] = $feedback[0]['email'];
         $_SESSION['password'] = $feedback[0]['password'];
@@ -60,8 +64,81 @@
         $firstname = $_SESSION['firstname'];
         $surname = $_SESSION['surname'];
         $email = $_SESSION['email'];
+        $id = $_SESSION['id']; 
+
+        // average attendance feature starts 
+
+        $firstDateOfMonth = date('Y-m-01');
+        $lastDateOfMonth = date('Y-m-t');
+
+        function totalWorkingDaysInAMonth () {
+        $daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        $currentYear = date('Y');
+        $currentMonthInDigit = date('m');
+        $currentMonthInWords = date('M');
+        $daysInCurrentMonth = date('t');
+        $currentDayDate = date('d');
+        $currentDay = date('D');
+        // $firstDateOfMonth = date('Y-m-01');
+        // $lastDateOfMonth = date('Y-m-t');
+        $firstDayOfMonth = date('l', strtotime("$currentMonthInWords 1, $currentYear"));
+    
+        $currentday = array_search($firstDayOfMonth, $daysOfTheWeek);
+        $counter = 0;
+
+       
+        for ($x = 1; $x <= $daysInCurrentMonth; $x++) {
+            
+            if ($daysOfTheWeek[$currentday] == 'Saturday') {
+                $currentday = 0;
+                continue;
+            } if ($daysOfTheWeek[$currentday] == 'Sunday' ) {
+                $currentday++;
+                continue;
+            } if ($currentDayDate == $x) {
+                $counter++;
+                break;
+            } 
+            else {
+                $counter++;
+                $currentday++;
+            }
+            
+        }
+        
+        if ($currentDayDate == 1) {
+            return 1;
+        } else {
+
+            return $counter;
+        }
+        }
+
+        $workingDays = totalWorkingDaysInAMonth ();
+        
+        $sql = "SELECT `sign-in`, `sign-out` FROM `records` WHERE `user-id`=$id AND `Date`BETWEEN '$firstDateOfMonth' AND '$lastDateOfMonth'";
+        $result = mysqli_query($conn, $sql);
+        $feedback = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        
+        $cont = 0;
+        foreach ($feedback as $key => $value) {
+            if ($value['sign-in'] == 1 && $value['sign-out'] == 1) {
+                $cont++;
+            }
+            
+        }
+        
+        $average = $cont / $workingDays * 100;
+
+        $finalAverage = round($average, 2);
+        $_SESSION['average'] = $finalAverage;
         
 
+        // average attendance feature ends
+        
+        //maintaining state of a returning user 
         $sql = "SELECT * from holder where firstname = '$firstname' AND surname = '$surname'
         AND email = '$email'";
 

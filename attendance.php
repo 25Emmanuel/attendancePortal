@@ -26,14 +26,18 @@
         </form>
       </div>
     </div>
-    <?php 
-      session_start();
-      if (isset($_SESSION['firstname'])) {
 
-        $firstname = $_SESSION['firstname'];
-        echo "<h1>Welcome $firstname</h1>"; 
-      }
-    ?>
+    <div class="welcome">
+
+      <?php 
+        session_start();
+        if (isset($_SESSION['firstname'])) {
+
+          $firstname = $_SESSION['firstname'];
+          echo "<h1>Welcome $firstname</h1>"; 
+        }
+      ?>
+    </div>
 
     
     <div class="att-container">
@@ -43,9 +47,15 @@
         <div class="date-holder"></div>
       </div>
       <div class="avg-att">
-        <h3>Avg Att: 65.7%</h3>
+        <?php
+          if (isset($_SESSION['average'])) {
+            $average = $_SESSION['average'];
+            echo "<p class='avg'>Average-Att</p>: "."<p class='avg'>$average%<p>";
+          }
+        ?>
+        <!-- <h3>Avg Att: 65.7%</h3> -->
       </div>
-      <form action="dummy.php">
+      <form action="tester.php">
         <table class="table">
           <tr class="headers">
             <th>Sign-In</th>
@@ -80,6 +90,33 @@
       </form>
 
     </div>
+
+    <!-- alert box -->
+    
+    <?php
+    if (isset($_SESSION['alert-In'])) {
+      $alert = $_SESSION['alert-In'];
+      echo $alert;
+      echo $alert ? '<script type="text/javascript"> alert("Sign-In Successfully")</script>' : null;
+    } else if (isset($_SESSION['alert-Out'])) {
+      $alert = $_SESSION['alert-Out'];
+      echo $alert;
+      echo $alert ? '<script type="text/javascript"> alert("Sign-Out Successfully")</script>' : null;
+    }
+      
+    ?>
+
+    <div class="alert-cont">
+        <div class="box">
+            <div class="content">
+                <h3 id="message">Succesful!</h3>
+                <div class="check-cont">
+                  <p id="check">&#x2713</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- alertbox -->
     <script src="attendance.js"></script>
   </body>
 </html>

@@ -9,8 +9,8 @@ html {
 }
 body {
     background: url(background.png);
-    /* font-family: MyOwnFontTwo; */
-    /* font-weight: 800; */
+    /* font-family: MyOwnFontTwo; 
+    font-weight: 800; */
 }
 .att-container {
     width: 80%;
@@ -66,6 +66,12 @@ body {
 .openbtn:hover {
     background-color: rgba(9, 223, 70, 0.571);
     ;
+}
+.welcome {
+    /* background: #818181; */
+    margin-left: 40px;
+    height: 25vh;
+    font-size: 3rem;
 }
 
 #main {
@@ -241,9 +247,17 @@ tr, th, td, table {
     /* left: 88.1rem;  */
 }
 .avg-att {
-    font-size: 3rem;
-    margin-left: 42rem;
+    width: 22rem;
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 1rem;
+    background: #818181;
+    text-align: center;
+    padding: 1rem;
+}
+.avg {
+    display: inline-block;
 }
 .submit-btn {
     width: 20vw;
@@ -263,6 +277,50 @@ tr, th, td, table {
 .submit-btn:hover {
     background:#089E5F;
 }
+
+/* alert box */
+
+.alert-cont {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+.msgIcon {
+    color: greenyellow;
+}
+#message {
+    margin-bottom: 25px;
+}
+.box {
+    border-radius: 5px;
+    margin-top: 100px;
+    margin-left: 300px;
+    height: 150px;
+    width: 500px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 2px 2px 8px black;
+}
+.check-cont {
+    border-radius: 50%;
+    background: greenyellow;
+    width: 55px;
+    height: 55px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: 25px;
+}
+.toggle {
+    display: block;
+}
+
+/* alert box */
 
 @media (height <= 668px) and (width <= 375px){
     .page-header {
@@ -299,7 +357,7 @@ tr, th, td, table {
     }
     .sign-in:checked + .sign-in-toogle-btn::after {
         content: "\2713";
-        background: hsl(120, 100%, 40%)	;
+        background: hsl(120, 100%, 40%);
         left: 12.5rem;
     }
     .sign-out-toogle-btn::after {
@@ -320,8 +378,9 @@ tr, th, td, table {
         left: 21.9rem;
     }
     .avg-att {
-        font-size: 1.5rem;
-        margin-left: 9rem;
+        font-size: 1rem;
+        margin-left: 11rem;
+        
     }
     .submit-btn {
         margin-top: 1rem;
